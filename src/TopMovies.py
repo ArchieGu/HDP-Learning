@@ -14,7 +14,7 @@ class TopMovies(MRJob):
         yield movieID, 1
     
     def reducer_count_ratings(self, key, values):
-        yield sum(values), key
+        yield str(sum(values)).zfill(5), key
     
     def reducer_sorted_output(self, count, movies):
         for movie in movies:
